@@ -1,0 +1,14 @@
+*{
+    font-size: 17px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+a.navbar-brand{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+
+}
+.navbar-nav .nav-item{
+    padding: 0px 3px;
+}

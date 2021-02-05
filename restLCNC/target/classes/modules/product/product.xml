@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.skyve.org/xml/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" title="product" name="product" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd" prototype="true">
+    <homeRef>list</homeRef>
+    <homeDocument>Product</homeDocument>
+    <documents>
+        <document ref="Product"/>
+    </documents>
+    <roles>
+        <role name="Maintainer">
+            <description>Create, edit and delete permission within the Product module.</description>
+            <privileges>
+                <document name="Product" permission="CRUDC"/>
+            </privileges>
+        </role>
+    </roles>
+    <menu>
+        <list document="Product" name="All Products">
+            <role name="Maintainer"/>
+        </list>
+    </menu>
+</module>

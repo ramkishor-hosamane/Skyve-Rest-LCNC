@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.skyve.org/xml/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" title="todo" name="todo" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd" prototype="true">
+    <homeRef>list</homeRef>
+    <homeDocument>ToDo</homeDocument>
+    <documents>
+        <document ref="ToDo"/>
+    </documents>
+    <roles>
+        <role name="Maintainer">
+            <description>Create, edit and delete permission within the ToDo module.</description>
+            <privileges>
+                <document name="ToDo" permission="CRUDC"/>
+            </privileges>
+        </role>
+    </roles>
+    <menu>
+        <list document="ToDo" name="All ToDos">
+            <role name="Maintainer"/>
+        </list>
+    </menu>
+</module>

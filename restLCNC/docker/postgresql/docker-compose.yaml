@@ -1,0 +1,36 @@
+# Creates a mysql database and wildfly instance
+# Usage: docker-compose up
+version: '2.0'
+services:
+  restLCNC_db:
+    container_name: restLCNC_postgresql_db
+    image: 'mdillon/postgis'
+    ports:
+      - '5433:5432'
+    expose:
+      - '5432'
+    environment:
+      POSTGRES_DB: 'restLCNC'
+      POSTGRES_USER: 'sa'
+      POSTGRES_PASSWORD: 'sa'
+  restLCNC_wildfly:
+    container_name: restLCNC_wildfly_postgresql
+    image: 'bizhubaustralia/skyve-wildfly-postgresql'
+    ports:
+      - '8081:8080'
+      - '9991:9990'
+      - '8788:8787'
+    environment:
+      SKYVE_CONTENT: '/content/'
+      SKYVE_DATASTORE_DIALECT: 'org.skyve.impl.persistence.hibernate.dialect.PostgreSQL95SpatialDialect'
+      SKYVE_HOSTNAME: 'localhost'
+      SKYVE_PORT: '8081'
+      SKYVE_URL: 'http://localhost:8081'
+      DATABASE_URL: 'restLCNC_db'
+      DATABASE_PORT: '5432'
+      SKYVE_SECURITY_DOMAIN_NAME: 'restLCNC'
+      SKYVE_JNDI_NAME: 'restLCNCDB'
+      IDENTIFIER: 'DEV'
+    volumes:
+      - '../../deployments:/opt/jboss/wildfly/standalone/deployments/'
+      - './content:/content'

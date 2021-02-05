@@ -1,0 +1,68 @@
+<!--Products table card-->
+<div class="card">
+    <div class="card-header">
+        <h5>Products</h5>
+
+    </div>
+    <div class="card-body">
+ 
+        <table class="table table-striped" style="width: 100%;">
+            <thead class="" style="background-color:#13b987">
+                <tr>
+                    <th class="scope">SLNO</th>
+                    <th class="scope">Name</th>
+                    <th class="scope">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr *ngFor="let product of products; let i = index">
+                    <td>{{i+1}}</td>
+
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+        
+            </tbody>
+        </table>
+
+
+    </div>
+  </div>
+
+<br>
+<br>
+
+
+ <!--Products Form card-->
+ <div class="card">
+    <div class="card-header">
+        <h5>Add Product</h5>
+
+    </div>
+    <div class="card-body">
+        
+        <form #productForm="ngForm" (ngSubmit)="onSubmitProductForm()" novalidate>
+
+            <div class="mb-3">
+              <label for="Name" class="form-label">Name</label>
+              <input [(ngModel)]="productModel.name" #name="ngModel" name="name" type="text" [class.is-valid]="name.touched && name.valid"  [class.is-invalid]="name.touched && name.invalid" class="form-control" aria-describedby="NameHelp" required>
+              <div class="text-danger" role="alert" *ngIf="name.touched && !name.valid">Product Name is Required</div>  
+            </div>
+            <div class="mb-3">
+              <label for="Price" class="form-label">Price</label>
+              <input [(ngModel)]="productModel.price" #price="ngModel" name="price" [class.is-valid]="price.touched && price.valid" [class.is-invalid]="price.touched && price.invalid" type="text" class="form-control" required>
+              <div class="text-danger" role="alert" *ngIf="price.touched && !price.valid">Product Price is Required</div>  
+
+            </div>
+
+            <button type="submit" [disabled]="productForm.form.invalid" class="btn btn-primary">Submit</button>
+            <!--<div style="margin-top:10px" class="alert alert-success alert-dismissible fade show " role="alert">
+                <strong>Form Submited Successfully</strong> 
+                
+            </div>--> 
+
+        </form>
+
+    </div>
+  </div>
