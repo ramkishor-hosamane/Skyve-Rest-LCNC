@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   providers:[]
 })
 export class AppComponent {
-  title="Ecom";
+  title="Ecommerce";
 
 }
