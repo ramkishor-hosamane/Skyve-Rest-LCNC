@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Product : </h5>
+
+    </div>
+    <div class="card-body">
+<!---->
+        <form #productUpdateForm="ngForm" (ngSubmit)="onUpdateProduct()" novalidate>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input [(ngModel)]="product.name"  name="name" type="text"
+                    class="form-control" aria-describedby="NameHelp">
+
+            </div>
+            <div class="mb-3">
+                <label for="Price" class="form-label">Price</label>
+                <input [(ngModel)]="product.price" name="price" type="text"
+                    class="form-control">
+
+
+            </div>
+
+
+
+
+
+
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+
+        
+        
+        </form>
+
+    </div>

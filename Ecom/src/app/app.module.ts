@@ -11,6 +11,7 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { ProductComponent } from './Components/product/product.component';
+import { UpdateProductComponent } from './Components/product/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductComponent } from './Components/product/product.component';
     SignupComponent,
     LoginComponent,
     NotFoundComponent,
-    ProductComponent
+    ProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -28,15 +30,7 @@ import { ProductComponent } from './Components/product/product.component';
     HttpClientModule,
     FormsModule,
     
-    RouterModule.forRoot([
-      { path :'' , component:ProductComponent},
-      { path :'home' , component:HomeComponent},
-      { path :'signuop' , component:AppComponent},
-      { path :'login' , component:AppComponent},
-      { path :'**' , component:NotFoundComponent},
-
-    ])
-    
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

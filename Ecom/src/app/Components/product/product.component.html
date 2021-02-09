@@ -5,64 +5,88 @@
 
     </div>
     <div class="card-body">
- 
+
         <table class="table table-striped" style="width: 100%;">
             <thead class="" style="background-color:#13b987">
                 <tr>
                     <th class="scope">SLNO</th>
                     <th class="scope">Name</th>
                     <th class="scope">Price</th>
+                    <th class="scope">Options</th>
+
                 </tr>
             </thead>
             <tbody>
-        
+
                 <tr *ngFor="let product of products; let i = index">
                     <td>{{i+1}}</td>
 
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
+
+
+                    <td>
+                        <button type="button" class="btn btn-info btn-md"
+                             (click)="updateProductFields(product)">Update</button>
+                        <button class="btn btn-danger btn-md" (click)="onDeleteProduct(product)"
+                            style="margin-left: 10px;">Delete</button>
+
+                            
+                    </td>
+                        
                 </tr>
-        
+
+
             </tbody>
         </table>
 
 
     </div>
-  </div>
+</div>
 
 <br>
-<br>
 
 
- <!--Products Form card-->
- <div class="card">
+<!--Products Form card-->
+<div class="card">
     <div class="card-header">
         <h5>Add Product</h5>
 
     </div>
     <div class="card-body">
-        
+
         <form #productForm="ngForm" (ngSubmit)="onSubmitProductForm()" novalidate>
 
             <div class="mb-3">
-              <label for="Name" class="form-label">Name</label>
-              <input [(ngModel)]="productModel.name" #name="ngModel" name="name" type="text" [class.is-valid]="name.touched && name.valid"  [class.is-invalid]="name.touched && name.invalid" class="form-control" aria-describedby="NameHelp" required>
-              <div class="text-danger" role="alert" *ngIf="name.touched && !name.valid">Product Name is Required</div>  
+                <label for="Name" class="form-label">Name</label>
+                <input [(ngModel)]="productModel.name" #name="ngModel" name="name" type="text"
+                    [class.is-valid]="name.touched && name.valid && !productForm.submitted"
+                    [class.is-invalid]="name.touched && name.invalid && !productForm.submitted" class="form-control"
+                    aria-describedby="NameHelp" required>
+                <div class="text-danger" role="alert" *ngIf="name.touched && !name.valid && !productForm.submitted">
+                    Product Name is Required</div>
             </div>
             <div class="mb-3">
-              <label for="Price" class="form-label">Price</label>
-              <input [(ngModel)]="productModel.price" #price="ngModel" name="price" [class.is-valid]="price.touched && price.valid" [class.is-invalid]="price.touched && price.invalid" type="text" class="form-control" required>
-              <div class="text-danger" role="alert" *ngIf="price.touched && !price.valid">Product Price is Required</div>  
+                <label for="Price" class="form-label">Price</label>
+                <input [(ngModel)]="productModel.price" #price="ngModel" name="price"
+                    [class.is-valid]="price.touched && price.valid && !productForm.submitted"
+                    [class.is-invalid]="price.touched && price.invalid && !productForm.submitted" type="text"
+                    class="form-control" required>
+                <div class="text-danger" role="alert" *ngIf="price.touched && !price.valid && !productForm.submitted">
+                    Product Price is Required</div>
 
             </div>
 
             <button type="submit" [disabled]="productForm.form.invalid" class="btn btn-primary">Submit</button>
-            <!--<div style="margin-top:10px" class="alert alert-success alert-dismissible fade show " role="alert">
-                <strong>Form Submited Successfully</strong> 
-                
-            </div>--> 
+            <div style="margin-top:10px" *ngIf="alert_success" class="alert alert-success alert-dismissible fade show "
+                role="alert">
+                <strong>Form Submited Successfully</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
         </form>
 
     </div>
-  </div>
+</div>
